@@ -58,32 +58,6 @@ on_new_sample_from_sink(GstElement *elt)
     return ret;
 }
 
-gboolean
-time_ctrl()
-{
-    gint64 position = 0;
-    guint64 duration;
-
-    duration = DURATION_OF_ENCVIDEO;
-
-    GstFormat format = GST_FORMAT_TIME;
-
-    gst_element_query_position(pipeline, format, &position);
-
-    if (position >= duration * GST_NANOSECOND)
-    {
-        GstEvent *event = gst_event_new_eos();
-        if (event)
-        {
-            if (!gst_element_send_event(pipeline, event))
-            {
-                g_print("send EOS event to pipeline failed.\n");
-                return -1;
-            }
-        }
-    }
-}
-
 static gboolean
 bus_callback(GstBus *bus, GstMessage *message, gpointer data)
 {
@@ -133,10 +107,6 @@ int main(int argc, char *argv[])
     // Initialize GStreamer
     gst_init(&argc, &argv);
 
-    //每隔一秒执行一次
-    //g_timeout_add_seconds(1, (GSourceFunc)time_ctrl, NULL);
-
-    //loop必须在前面初始化。
     loop = g_main_loop_new(NULL, FALSE);
 
     if ((fp = fopen("test.h264", "a+")) == NULL)
