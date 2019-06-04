@@ -8,7 +8,8 @@ v4l2-enc-appsink.c
 file-enc-appsink.c
 
 ### v4l2-enc-appsink.c:
-The gstreamer pipeline is v4l2src--srccapsfilter--timeoverlay--x264enc--enc_queue--sink.  
+The gstreamer pipeline is v4l2src--srccapsfilter--timeoverlay--x264enc--enc_queue--sink.      
+It will save 20s of the h264 video.
 
 ### file-enc-appsink.c
 The gstreamer pipeline is filesrc--videoparse--timeoverlay--x264enc--enc_queue--sink.  
