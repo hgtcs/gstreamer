@@ -124,7 +124,7 @@ bus_callback(GstBus *bus, GstMessage *message, gpointer data)
 
 int main(int argc, char *argv[])
 {
-    GstElement *src, *srccapsfilter, *timeoverlay, *enc, *enc_queue, *sink, *videoparse;
+    GstElement *src, *srccapsfilter, *timeoverlay, *enc, *enc_queue, *sink;
     GMainLoop *loop;
     GstBus *bus;
     GstCaps *srcCaps;
@@ -155,14 +155,14 @@ int main(int argc, char *argv[])
     pipeline = gst_pipeline_new("usb-264enc");
 
     // Build the element
-    src = gst_element_factory_make("v4l2src", NULL);
-    srccapsfilter     = gst_element_factory_make("capsfilter", NULL);
-    timeoverlay = gst_element_factory_make("timeoverlay", NULL);
-    enc = gst_element_factory_make("x264enc", NULL);
-    enc_queue = gst_element_factory_make("queue", NULL);
-    sink = gst_element_factory_make("appsink", NULL);
+    src                 = gst_element_factory_make("v4l2src", NULL);
+    srccapsfilter       = gst_element_factory_make("capsfilter", NULL);
+    timeoverlay         = gst_element_factory_make("timeoverlay", NULL);
+    enc                 = gst_element_factory_make("x264enc", NULL);
+    enc_queue           = gst_element_factory_make("queue", NULL);
+    sink                = gst_element_factory_make("appsink", NULL);
 
-    if (!pipeline || !src || !videoparse || !timeoverlay || !enc || !enc_queue || !sink)
+    if (!pipeline || !src || !srccapsfilter || !timeoverlay || !enc || !enc_queue || !sink)
     {
         g_print("FAILED to create common element.\n");
         return -1;
