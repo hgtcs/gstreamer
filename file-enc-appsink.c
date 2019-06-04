@@ -154,12 +154,12 @@ int main(int argc, char *argv[])
     pipeline = gst_pipeline_new("file-264enc");
 
     // Build the element
-    src = gst_element_factory_make("filesrc", NULL);
-    videoparse = gst_element_factory_make("videoparse", NULL);
-    timeoverlay = gst_element_factory_make("timeoverlay", NULL);
-    enc = gst_element_factory_make("x264enc", NULL);
-    enc_queue = gst_element_factory_make("queue", NULL);
-    sink = gst_element_factory_make("appsink", NULL);
+    src             = gst_element_factory_make("filesrc", NULL);
+    videoparse      = gst_element_factory_make("videoparse", NULL);
+    timeoverlay     = gst_element_factory_make("timeoverlay", NULL);
+    enc             = gst_element_factory_make("x264enc", NULL);
+    enc_queue       = gst_element_factory_make("queue", NULL);
+    sink            = gst_element_factory_make("appsink", NULL);
     
 
     if (!pipeline || !src || !videoparse || !timeoverlay || !enc || !enc_queue || !sink)
