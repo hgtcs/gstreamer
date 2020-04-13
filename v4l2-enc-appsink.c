@@ -2,7 +2,7 @@
 #include <gst/app/app.h>
 #include <stdio.h>
 
-//十亿，10^9，Nanosecond 0
+//十亿，10^9，Nanosecond
 #define GST_NANOSECOND 1000000000
 
 //unit: seconds,编码视频的时长
